@@ -1,0 +1,71 @@
+#!/bin/bash
+
+# <<YAMLDOC
+# namespace: /neutron37/susudoio
+# description: "Wraps of su and sudo for non-admin OS-X users."
+# copyright: "Neutron37"
+# authors: "neutron37@satori.us"
+# tags: su sudo susudoio
+# YAMLDOC
+
+set -euo pipefail
+
+###############
+## Variables ##
+###############
+readonly USER_PWD=$( pwd )
+readonly ACTIVE_USER=$( whoami )
+readonly SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+readonly INCLUDES_DIR="${SCRIPT_DIR}/includes"
+
+##############
+## Includes ##
+##############
+source "${INCLUDES_DIR}/neutron37_bashlib.sh"
+source "${INCLUDES_DIR}/susudoio.sh"
+
+##########
+## Vars ##
+##########
+ADMIN_USER_DEFAULT=$( susudoio::members admin | grep -v root | head -n1 )
+TARGET_USER_DEFAULT=$( whoami )
+
+##########
+## Args ##
+##########
+COMMAND="$1"
+shift
+
+# Parse Command Line Arguments
+while [ "$#" -gt 0 ]; do
+  case "$1" in
+    --admin-pass=*)
+        ARG_ADMIN_PASS="${1#*=}"
+        ;;
+    --admin-user=*)
+        ARG_ADMIN_USER="${1#*=}"
+        ;;
+    --target-user=*)
+        ARG_TARGET_USER="${1#*=}"
+        ;;
+    --help) susudoio::help;;
+    *)
+      bashlib::exit_fail 'Invalid argument. Try "susudoio --help" for valid arguments.'
+  esac
+  shift
+done
+
+##########
+## Main ##
+##########
+
+# Gather user info including admin authentication credentials.
+susudoio::set_admin_user
+susudoio::set_admin_password
+susudoio::set_target_user
+
+export SUSUDOIO_TARGET="${TARGET_USER}"
+export SUSUDOIO_ADMIN="${ADMIN_USER}"
+
+susudoio::become "${COMMAND}"
+exit "$?"

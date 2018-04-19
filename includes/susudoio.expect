@@ -1,0 +1,36 @@
+#!/usr/bin/expect
+
+# Hopefully nobody is running processes longer than 10 minutes?
+set timeout 3600
+
+# Set arguments from command line.
+set SU_USER [lindex $argv 0];
+set SU_PASS [lindex $argv 1];
+set SU_CMD [lindex $argv 2];
+
+# Disable expect's diagnostic output.
+exp_internal 0
+
+# Hide expect's activity for now.
+log_user 0
+
+# Spawn su command.
+spawn su -l ${SU_USER} -c ${SU_CMD}
+
+# Enter password when prompted.
+expect "Password:"
+send "${SU_PASS}\n"
+
+# Capture newline from above...
+expect {
+  -re "\n" {
+    # Don't echo it!
+  }
+}
+
+# Switch to interact
+interact
+
+# Capture exit status and exit
+lassign [wait] pid spawnid os_error_flag value
+exit $value
