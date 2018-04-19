@@ -11,10 +11,8 @@
 set -euo pipefail
 
 ###############
-## Variables ##
+## Path vars ##
 ###############
-readonly USER_PWD=$( pwd )
-readonly ACTIVE_USER=$( whoami )
 readonly SCRIPT_REALPATH="$( perl -MCwd=abs_path -le 'print abs_path readlink(shift);' ${BASH_SOURCE[0]} )"
 readonly SCRIPT_DIR="$( cd "$( dirname ${SCRIPT_REALPATH} )" && pwd )"
 readonly INCLUDES_DIR="${SCRIPT_DIR}/includes"
@@ -28,8 +26,9 @@ source "${INCLUDES_DIR}/susudoio.sh"
 ##########
 ## Vars ##
 ##########
-ADMIN_USER_DEFAULT=$( susudoio::members admin | grep -v root | head -n1 )
-TARGET_USER_DEFAULT=$( whoami )
+readonly USER_PWD=$( pwd )
+readonly ADMIN_USER_DEFAULT=$( susudoio::members admin | grep -v root | head -n1 )
+readonly TARGET_USER_DEFAULT=$( whoami )
 
 ##########
 ## Args ##
