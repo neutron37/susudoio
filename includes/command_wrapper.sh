@@ -19,5 +19,5 @@ export SUSUDOIO_ADMIN="${ADMIN_USER}"
 export -f 'susudoio::runas_admin'
 export -f 'susudoio::runas_target'
 cd "${USER_PWD}"
-"$COMMAND"
+${COMMAND}
 exit "$?"
