@@ -15,7 +15,8 @@ set -euo pipefail
 ###############
 readonly USER_PWD=$( pwd )
 readonly ACTIVE_USER=$( whoami )
-readonly SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+readonly SCRIPT_REALPATH="$( perl -MCwd=abs_path -le 'print abs_path readlink(shift);' ${BASH_SOURCE[0]} )"
+readonly SCRIPT_DIR="$( cd "$( dirname ${SCRIPT_REALPATH} )" && pwd )"
 readonly INCLUDES_DIR="${SCRIPT_DIR}/includes"
 
 ##############
