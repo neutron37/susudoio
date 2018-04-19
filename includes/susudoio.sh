@@ -27,7 +27,7 @@ susudoio::help() {
   susudoio::logo
   
   MSG_HELP=$( cat <<"HELP"
-usage: susudoio <command> [--help] [--admin-user] [--admin-pass] [--target-user]
+usage: susudoio [--help] [--admin-user] [--admin-pass] [--target-user] <command>
 
 The <command> argument is required, and all other arguents are optional:
 
