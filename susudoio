@@ -33,8 +33,6 @@ readonly TARGET_USER_DEFAULT=$( whoami )
 ##########
 ## Args ##
 ##########
-COMMAND="$1"
-shift
 
 # Parse Command Line Arguments
 while [ "$#" -gt 0 ]; do
@@ -50,10 +48,12 @@ while [ "$#" -gt 0 ]; do
         ;;
     --help) susudoio::help;;
     *)
-      bashlib::exit_fail 'Invalid argument. Try "susudoio --help" for valid arguments.'
+      break
   esac
   shift
 done
+
+COMMAND="$@"
 
 ##########
 ## Main ##
