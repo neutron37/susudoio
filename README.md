@@ -1,5 +1,8 @@
 # Susudoio
+
 susudoio wraps su+sudo into one-easy-step for non-admin MacOS users :)
+
+If you're using an admin account as your primary, this tool might not be for you.
 
 ## Usage
 
@@ -31,7 +34,7 @@ I'm really not sure how secure this tool is... Doesn't seem too bad. I could use
 
 ### Susudoio wraps su+sudo
 
-This makes it easier to use a non-admin account as your primary login on MacOS. If you're using an admin account as your primary, this tool might not be for you.
+This makes it easier to use a non-admin account as your primary login on MacOS.
 
 * Only enter the admin password once, instead of one time for su and then again for sudo.
 * Using brew, Docker, and other things can be slightly less annoying.
