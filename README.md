@@ -49,7 +49,7 @@ The <command> argument is required, and all other arguents are optional:
 
 ### Susudoio simplifies bootstrapping a new MacBook
 
-* zero install dependencies. Works on fresh MacOS install. Protoscript.
+* zero install dependencies. Works on fresh MacOS install.
 * You can pass the admin password as an argument. Must be used with caution!
 
 ### Susudoio provides bash convenience functions any bash scripts called by it
