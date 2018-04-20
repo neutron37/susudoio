@@ -37,6 +37,9 @@ readonly TARGET_USER_DEFAULT=$( whoami )
 # Parse Command Line Arguments
 while [ "$#" -gt 0 ]; do
   case "$1" in
+    -a)
+        ARG_ADMIN_FLAG=1
+        ;;
     --admin-pass=*)
         ARG_ADMIN_PASS="${1#*=}"
         ;;
@@ -60,6 +63,7 @@ COMMAND="$@"
 ##########
 
 # Gather user info including admin authentication credentials.
+susudoio::set_admin_flag
 susudoio::set_admin_user
 susudoio::set_admin_password
 susudoio::set_target_user

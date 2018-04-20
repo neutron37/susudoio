@@ -31,6 +31,8 @@ usage: susudoio [--help] [--admin-user] [--admin-pass] [--target-user] <command>
 
 The <command> argument is required, and all other arguents are optional:
 
+-a              Flag to run as admin, instead of admin sudo.
+
 --admin-user    The administrative user
                   defaults to first non-root member of the admin group.
 
@@ -54,6 +56,10 @@ susudoio::set_target_user() {
   TARGET_USER="${ARG_TARGET_USER:-$TARGET_USER_DEFAULT}"
 }
 
+susudoio::set_admin_flag() {
+  ADMIN_FLAG="${ARG_ADMIN_FLAG:-0}"
+}
+
 susudoio::set_admin_user() {
   ADMIN_USER="${ARG_ADMIN_USER:-$ADMIN_USER_DEFAULT}"
 }
@@ -69,7 +75,7 @@ susudoio::set_admin_password() {
 
 susudoio::become() {
   ### @TODO Nest $COMMAND in wrapper.
-  SU_CMD="echo ${ADMIN_PASS} | sudo -S --prompt='' ${INCLUDES_DIR}/command_wrapper.sh ${USER_PWD} ${ADMIN_USER} ${TARGET_USER} '${COMMAND}'"
+  SU_CMD="echo ${ADMIN_PASS} | sudo -S --prompt='' ${INCLUDES_DIR}/command_wrapper.sh ${USER_PWD} ${ADMIN_USER} ${TARGET_USER} ${ADMIN_FLAG} '${COMMAND}'"
   ${INCLUDES_DIR}/susudoio.expect "${ADMIN_USER}" "${ADMIN_PASS}" "$SU_CMD"
   return "$?"
 }
