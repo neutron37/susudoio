@@ -37,7 +37,7 @@ I'm really not sure how secure this tool is... Doesn't seem too bad. I could use
 This makes it easier to use a non-admin account as your primary login on MacOS.
 
 * Only enter the admin password once, instead of one time for su and then again for sudo.
-* Using brew, Docker, and other things can be slightly less annoying.
+* Installing and using brew, Docker, and other things can be slightly less annoying.
   * ex. `susudoio -a brew install junk`
 
 ### Susudoio provides bash convenience functions to any bash scripts called by it
