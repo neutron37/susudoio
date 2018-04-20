@@ -1,5 +1,5 @@
 # Susudoio
-Non-admin MacOS user? susudoio wraps su+sudo into one-easy-step!
+susudoio wraps su+sudo into one-easy-step for non-admin MacOS users!
 
 ## Usage
 
