@@ -33,14 +33,37 @@ The <command> argument is required, and all other arguents are optional:
 --help          Display this help.
 ```
 
-## Goals:
+## susudoio features & use cases
 
-* Allows you to be lazy and (hopefully, see caveats) secure. Only enter admin password once per instantiation.
-* Leverage sudo from a non-admin account.
-* Simplifies bootstrapping a Mac when your primary login is non-admin.
-* Simplifies using a Mac when your primary login is non-admin. (ex. brew, Docker, and other annoying things.)
-* Zero install dependencies. Works on fresh MacOS install.
+### Susudoio wraps su+sudo to make it easier to use a non-admin account as your primary login on MacOS.
 
+* Using brew, Docker, and other things can be slightly less annoying.
+  * ex. `susudoio -a brew install junk`
+* Be lazy by only entering the admin password once per instantiation, instead of once for su and then again for sudo
+* Use a Yubikey for admin /sudo stuff and don't sweat your usual (non-admin) login as much (or use a different Yubikey!).
+
+### Susudoio provides sensible defaults.
+
+* Defaults to running commands as root via su+sudo, but with the -a flag privaleges will only escalate to admin.
+* Guesses the admin user for you if you don't specify one.
+
+### Susudoio simplifies bootstrapping a new MacBook
+
+* zero install dependencies. Works on fresh MacOS install. Protoscript.
+* You can pass the admin password as an argument. Must be used with caution!
+
+### Susudoio provides bash convenience functions any bash scripts called by it
+* \<command\>
+  * Runs \<command\> as root.
+* susudoio::runas_admin \<command\>
+  * Runs \<command\> as the admin user.
+* susudoio::runas_target \<command\>
+  * Runs \<command\> as the target user.
+  
 ## Caveats:
 
 I'm not sure how secure this is... Doesn't seem too bad. I could use some feedback on this from the pranoid & evil folks out there. Thanks!
+
+## Up next:
+
+See https://github.com/neutron37/susudoio/issues
