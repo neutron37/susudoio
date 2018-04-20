@@ -62,7 +62,7 @@ The <command> argument is required, and all other arguents are optional:
   
 ## Caveats:
 
-I'm not sure how secure this is... Doesn't seem too bad. I could use some feedback on this from the pranoid & evil folks out there. Thanks!
+I'm not sure how secure this is... Doesn't seem too bad. I could use some feedback on this from you lovely paranoid & evil folks out there. Thanks!
 
 ## Up next:
 
