@@ -1,4 +1,4 @@
-# susudoio
+# Susudoio
 Non-admin MacOS user? susudoio wraps su+sudo into one-easy-step!
 
 ## Caveats:
@@ -38,7 +38,7 @@ The <command> argument is required, and all other arguents are optional:
 --help          Display this help.
 ```
 
-## susudoio features & use cases
+## Susudoio features & use cases
 
 ### Susudoio wraps su+sudo
 
