@@ -35,7 +35,9 @@ The <command> argument is required, and all other arguents are optional:
 
 ## susudoio features & use cases
 
-### Susudoio wraps su+sudo to make it easier to use a non-admin account as your primary login on MacOS.
+### Susudoio wraps su+sudo
+
+This makes it easier to use a non-admin account as your primary login on MacOS. If you're using an admin account as your primary, this tool might not be for you.
 
 * Using brew, Docker, and other things can be slightly less annoying.
   * ex. `susudoio -a brew install junk`
