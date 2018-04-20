@@ -98,7 +98,7 @@ susudoio::help() {
   susudoio::logo
   
   MSG_HELP=$( cat <<"HELP"
-usage: susudoio [--help] [--admin-user] [--admin-pass] [--target-user] <command>
+usage: susudoio [-a] [--admin-user] [--admin-pass] [--target-user] [--help] <command>
 
 The <command> argument is required, and all other arguents are optional:
 
@@ -112,6 +112,8 @@ The <command> argument is required, and all other arguents are optional:
 
 --target-user   The target user
                   defaults to the current user.
+
+--help          Display this help.
 HELP)
   bashlib::msg_stdout "${MSG_HELP}"
   bashlib::exit_fail ""
@@ -160,6 +162,10 @@ readonly TARGET_USER_DEFAULT=$( whoami )
 ##########
 ## Args ##
 ##########
+
+if [ -z "$*" ]; then
+  susudoio::help
+fi
 
 # Parse Command Line Arguments
 while [ "$#" -gt 0 ]; do
