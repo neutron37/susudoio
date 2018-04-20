@@ -107,8 +107,8 @@ The <command> argument is required, and all other arguents are optional:
 --admin-user    The administrative user
                   defaults to first non-root member of the admin group.
 
---admin-pass    The administrative password,
-                  if missing, will be asked for interactively.
+--admin-pass    The administrative password, use with caution!
+                  If missing, the password will be prompted for interactively.
 
 --target-user   The target user
                   defaults to the current user. 
