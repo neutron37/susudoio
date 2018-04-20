@@ -52,7 +52,7 @@ The <command> argument is required, and all other arguents are optional:
 * zero install dependencies. Works on fresh MacOS install.
 * You can pass the admin password as an argument. Must be used with caution!
 
-### Susudoio provides bash convenience functions any bash scripts called by it
+### Susudoio provides bash convenience functions to any bash scripts called by it
 * \<command\>
   * Runs \<command\> as root.
 * susudoio::runas_admin \<command\>
