@@ -1,6 +1,27 @@
 # Susudoio
 Non-admin MacOS user? susudoio wraps su+sudo into one-easy-step!
 
+## Usage
+
+```
+susudoio [-a] [--admin-user] [--admin-pass] [--target-user] [--help] <command>
+
+The <command> argument is required, and all other arguents are optional:
+
+-a              Flag to run as admin, instead of admin sudo.
+
+--admin-user    The administrative user
+                  defaults to first non-root member of the admin group.
+
+--admin-pass    The administrative password,
+                  if missing, will be asked for interactively.
+
+--target-user   The target user
+                  defaults to the current user. Has no effect unless you're using the included bash convenience functions.
+
+--help          Display this help.
+```
+
 ## Caveats
 
 I'm really not sure how secure this tool is... Doesn't seem too bad. I could use some feedback on this from you lovely paranoid & evil folks out there. Thanks!
@@ -40,37 +61,3 @@ Use a Yubikey for your admin / sudo authentication. Heck, use a different one fo
 ## Up next
 
 See https://github.com/neutron37/susudoio/issues
-
-## Help
-
-```
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃  SUSUDOIO                       ...whoa oh oh ┃
-┃                                               ┃
-┃  Wraps su and sudo for non-admin MacOS users. ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-                                ©2018 Neutron37
-
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ WARNING:                                      ┃
-┃ This script might not be the most secure...   ┃
-┃                         Use with caution!!!   ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-
-usage: susudoio [-a] [--admin-user] [--admin-pass] [--target-user] [--help] <command>
-
-The <command> argument is required, and all other arguents are optional:
-
--a              Flag to run as admin, instead of admin sudo.
-
---admin-user    The administrative user
-                  defaults to first non-root member of the admin group.
-
---admin-pass    The administrative password,
-                  if missing, will be asked for interactively.
-
---target-user   The target user
-                  defaults to the current user. Has no effect unless you're using the included bash convenience functions.
-
---help          Display this help.
-```
