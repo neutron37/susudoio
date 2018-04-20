@@ -1,6 +1,11 @@
 # susudoio
 Non-admin MacOS user? susudoio wraps su+sudo into one-easy-step!
 
+## Caveats:
+
+I'm really not sure how secure this tool is... Doesn't seem too bad. I could use some feedback on this from you lovely paranoid & evil folks out there. Thanks!
+
+
 ```
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 ┃  SUSUDOIO                       ...whoa oh oh ┃
@@ -39,10 +44,9 @@ The <command> argument is required, and all other arguents are optional:
 
 This makes it easier to use a non-admin account as your primary login on MacOS. If you're using an admin account as your primary, this tool might not be for you.
 
+* Only enter the admin password once, instead of one time for su and then again for sudo.
 * Using brew, Docker, and other things can be slightly less annoying.
   * ex. `susudoio -a brew install junk`
-* Be lazy by only entering the admin password once per instantiation, instead of once for su and then again for sudo
-* Use a Yubikey for admin /sudo stuff and don't sweat your usual (non-admin) login as much (or use a different Yubikey!).
 
 ### Susudoio provides sensible defaults.
 
@@ -61,10 +65,10 @@ This makes it easier to use a non-admin account as your primary login on MacOS. 
   * Runs \<command\> as the admin user.
 * susudoio::runas_target \<command\>
   * Runs \<command\> as the target user.
-  
-## Caveats:
 
-I'm not sure how secure this is... Doesn't seem too bad. I could use some feedback on this from you lovely paranoid & evil folks out there. Thanks!
+## Potentially annoying security tips:
+
+Use a Yubikey for your admin / sudo authentication. Heck, use a different one for your non-admin authentication. Use FileVault! Try not to trust brew, docker, npm, etc too blindly. Re-install everything from scratch often. Daily if possible.
 
 ## Up next:
 
