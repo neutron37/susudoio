@@ -68,7 +68,7 @@ This makes it easier to use a non-admin account as your primary login on MacOS. 
 
 ## Potentially annoying security tips:
 
-Use a Yubikey for your admin / sudo authentication. Heck, use a different one for your non-admin authentication. Use FileVault! Try not to trust brew, docker, npm, etc too blindly. Re-install everything from scratch often. Daily if possible.
+Use a Yubikey for your admin / sudo authentication. Heck, use a different one for your non-admin authentication. Use FileVault! Try not to blindly trust brew, docker, npm, or package manager x. Re-install everything from scratch often, daily if possible.
 
 ## Up next:
 
