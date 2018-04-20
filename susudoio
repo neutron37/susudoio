@@ -151,7 +151,6 @@ susudoio::set_admin_password() {
 }
 
 susudoio::become() {
-  ### @TODO Nest $COMMAND in wrapper.
   SU_CMD="echo ${ADMIN_PASS} | sudo -S --prompt='' ${INCLUDES_DIR}/command_wrapper.sh ${USER_PWD} ${ADMIN_USER} ${TARGET_USER} ${ADMIN_FLAG} '${COMMAND}'"
   ${INCLUDES_DIR}/susudoio.expect "${ADMIN_USER}" "${ADMIN_PASS}" "$SU_CMD"
   return "$?"
