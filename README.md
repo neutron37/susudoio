@@ -17,7 +17,8 @@ The <command> argument is required, and all other arguents are optional:
                   if missing, will be asked for interactively.
 
 --target-user   The target user
-                  defaults to the current user. Has no effect unless you're using the included bash convenience functions.
+                  defaults to the current user. 
+                  No effect unless you're using the included bash convenience functions.
 
 --help          Display this help.
 ```
