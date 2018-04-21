@@ -81,33 +81,38 @@ bashlib::msg_stderr() {
 ## susudoio functions ##
 ########################
 
-susudoio::logo() {
-  echo -n "${STYLE_MAGENTA}"
-  cat <<"EOF"
+susudoio::logo() {  
+  # Read always returns non-zero
+  # Because of "set -e" we must prepend '!'
+  # Unquoted sentinel, HELP, allows expansion in the text block.
+  ! read -d '' MSG_LOGO <<EOF
+${STYLE_MAGENTA}
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 ┃  SUSUDOIO                       ...whoa oh oh ┃
 ┃                                               ┃
 ┃  Wraps su and sudo for non-admin MacOS users. ┃
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-EOF
-  echo "                                ©$( date +%Y ) Neutron37"
-  echo "${STYLE_RED}"
-
-  cat <<"EOF"
+                                ©$( date +%Y ) Neutron37
+${STYLE_RED}
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 ┃ WARNING:                                      ┃
 ┃ This script might not be the most secure...   ┃
 ┃                         Use with caution!!!   ┃
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+${STYLE_NORMAL}
 EOF
-  echo "${STYLE_NORMAL}"
+  bashlib::msg_stdout "${MSG_LOGO}"
 }
+
 
 susudoio::help() {
 
   susudoio::logo
   
-  MSG_HELP=$( cat <<"HELP"
+  # Read always returns non-zero
+  # Because of "set -e" we must prepend '!'
+  # Quoting the sentinel, HELP, prevents expansion in the text block.
+  ! read -d '' MSG_HELP <<"HELP" 
 usage: susudoio [-a] [--admin-user] [--admin-pass] [--target-user] [--help] <command>
 
 The <command> argument is required, and all other arguents are optional:
@@ -125,7 +130,7 @@ The <command> argument is required, and all other arguents are optional:
                   No effect unless you're using the included bash convenience functions.
 
 --help          Display this help.
-HELP)
+HELP
   bashlib::msg_stdout "${MSG_HELP}"
   bashlib::exit_fail ""
 }
