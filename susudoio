@@ -13,9 +13,19 @@ set -euo pipefail
 ###############
 ## Path vars ##
 ###############
-readonly SCRIPT_REALPATH="$( perl -MCwd=abs_path -le 'print abs_path readlink(shift);' ${BASH_SOURCE[0]} )"
-readonly SCRIPT_DIR="$( cd "$( dirname ${SCRIPT_REALPATH} )" && pwd )"
-readonly INCLUDES_DIR="${SCRIPT_DIR}/includes"
+
+# See: https://stackoverflow.com/questions/59895
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "${SOURCE}" ]; do
+  # resolve $SOURCE until the file is no longer a symlink
+  DIR=$( cd -P $( dirname ${SOURCE} ) && pwd )
+  SOURCE=$( readlink "${SOURCE}" );
+   # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+  [[ $SOURCE != /* ]] && SOURCE="${DIR}/${SOURCE}"
+done
+SOURCE_DIR=$( dirname ${SOURCE} )
+readonly SCRIPT_DIR=$( cd -P $SOURCE_DIR && pwd )
+readonly INCLUDES_DIR=${SCRIPT_DIR}/includes
 
 #################
 ## Text styles ##
