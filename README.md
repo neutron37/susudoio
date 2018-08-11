@@ -20,7 +20,7 @@ The <command> argument is required, and all other arguents are optional:
                   If missing, the password will be prompted for interactively.
 
 --target-user   The target user
-                  defaults to the current user. 
+                  defaults to the current user.
                   No effect unless you're using the included bash convenience functions.
 
 --help          Display this help.
@@ -43,9 +43,9 @@ This makes it easier to use a non-admin account as your primary login on MacOS.
 ### Susudoio provides bash convenience functions to any bash scripts called by it
 * \<command\>
   * Runs \<command\> as root.
-* susudoio::runas_admin \<command\>
+* susudoio_runas_admin \<command\>
   * Runs \<command\> as the admin user.
-* susudoio::runas_target \<command\>
+* susudoio_runas_target \<command\>
   * Runs \<command\> as the target user.
 
 ### Susudoio provides sensible defaults.
